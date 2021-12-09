@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Crefto </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--memanggil CSS dan font-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700"
+        rel="stylesheet">
+    <link href="styleLama.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+    <link rel="stylesheet" type="text/css" href="https://cdnout.com/bootstrap-tokenfield/css/bootstrap-tokenfield.css">
+    <script src="https://cdnout.com/bootstrap-tokenfield/bootstrap-tokenfield.js"></script>
+    <!-- NodeJS
+    <script src="<?php echo base_url('node_modules/socket.io-client/dist/socket.io.js');?>"></script>
+    <link rel="shortcut icon" href="<?=base_url();?>assets/template/both/img/favicon.ico"> -->
+</head>
+<!-- Bagian Header -->
+<audio id="notif_audio">
+    <!-- <source src="<?php echo base_url('sounds/notify.ogg');?>" type="audio/ogg">
+  <source src="<?php echo base_url('sounds/notify.mp3');?>" type="audio/mpeg">
+  <source src="<?php echo base_url('sounds/notify.wav');?>" type="audio/wav"> -->
+</audio>
+<nav role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+
+
+    <div class="container">
+        <!-- Title -->
+        <div class="navbar-header pull-left">
+            <div class="title"><a href="#" class="navbar-brand"></a></div>
+        </div>
+        <!---->
+        <div class="navbar-header pull-right">
+            <ul class="nav pull-left">
+                <li class="dropdown pull-right">
+                    <a href="#" data-toggle="dropdown"
+                        style="color:#777; margin-top: 5px;padding:9px 3px;background-color: transparent;"
+                        class="dropdown-toggle"><span class="label label-pill label-danger count"
+                            style="border-radius:10px;"></span> @zivimoch<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#" title="Profile">Profile</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Profile">Settings</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Logout">Logout</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown pull-right">
+                    <a id="notifbell" href="#" data-toggle="dropdown"
+                        style="color:#777; margin-top: 5px;font-size:19px;padding:9px 3px 3px 3px;background-color: transparent;"
+                        class="dropdown-toggle">
+                        <span class="glyphicon glyphicon-bell"></span>
+                        <div id="notif_count">
+                            <span
+                                style="position: absolute;top: 5px;right: -2px;padding: 0px 5px;border-radius: 50%;background-color: red;color: white;font-size: 12px;">
+                                8
+                            </span>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <div id="notif"></div>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <small><em> see all messages</em></small>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <a href="#" class="btn btn-md btn-success ModalaAdd" data-toggle="modal" data-target="#ModalaAdd"
+                    style="margin: 8px 5px 5px 3px">+ Post</a>
+            </ul>
+            <!--Toogle-->
+            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span
+                    class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+                    class="icon-bar"></span><span class="icon-bar"></span></button>
+        </div>
+        <div class="visible-xs-block clearfix"></div>
+        <div class="collapse navbar-collapse navbar-right">
+            <ul class="nav navbar-nav pull-left">
+                <li><a href="#">Feeds</a></li>
+                <li><a href="#">Project</a></li>
+                <li><a href="#">Job</a></li>
+                <li><a href="#">Workspace</a></li>
+            </ul>
+        </div>
+        <!---->
+        <!--Search Bar-->
+        <div class="collapse navbar-collapse navbar-left" style="overflow: visible;">
+            <form action="#" method="GET" class="navbar-form" role="search">
+
+                <div class="input-group stylish-input-group">
+                    <input name="keyword" type="text" id="search" class="form-control" placeholder="Search" value="">
+                    <input type="hidden" name="pages" id="pages" type="text" class="form-control" value="">
+                    <div class="input-group-btn" style="border: 1px solid;background: white;z-index: 2;">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span id="srch-category">Category</span> <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" id="mnu-category" style="min-width: 0px !important;">
+                            <li><a href="#" onclick="page(1)">Status</a></li>
+                            <li><a href="#" onclick="page(2)">Project</a></li>
+                            <li><a href="#" onclick="page(3)">Job</a></li>
+                        </ul>
+                    </div>
+                    <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+
+            </form>
+        </div>
+        <!---->
+    </div>
+</nav>
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        if ($('#pages').val() == 3) {
+            $('#srch-category').text("Job");
+        } else if ($('#pages').val() == 2) {
+            $('#srch-category').text("Project");
+        } else {
+            $('#srch-category').text("Status");
+        }
+
+        $('#mnu-category').find('a').click(function (e) {
+            e.preventDefault();
+            var pageOption = $(this).text();
+            $('#srch-category').text(pageOption);
+
+            if (pageOption == "Job") {
+                $('#pages').val(3);
+            } else if (pageOption == "Project") {
+                $('#pages').val(2);
+            } else {
+                $('#pages').val(1);
+            }
+        });
+    });
+</script>
+<!-- End Bagian Header -->
+
+<body style="background-color: #EFF2F3">
+    <div class="container wrapper">
+        <!-- Bagian Wrapper 3 kolom -->
+        <div class="row">
+            <div class="col-md-5 articles">
+                <!--Konten yang berubah ubah-->
+                <div id="alert-post2"></div>
+                <article class="posts" id="post3">
+                    <div class="content">
+                        <section class="post-heading">
+                            <div class="row">
+                                <div class="col-xs-12">
+
+                                    <div class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto pull-right">
+                                        <span class="nav-item dropdown">
+                                            <a class="nav-link" data-toggle="dropdown" href="#"><i
+                                                    class="glyphicon glyphicon-chevron-down"></i></a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li>
+                                                    <a onclick="javascript:detail_post();">Delete</a>
+                                                </li>
+                                            </ul>
+                                        </span>
+                                    </div>
+                                    <div class="media-left">
+                                        <a href="'.base_url().'u/'zivicode'">
+                                            <img class="media-object photo-xsmall" src="#" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <a href="#" class="anchor-username">
+                                            <h5 class="media-heading">Addzifi Mochamad Gumelar</h5>
+                                        </a>
+                                        <a href="#" class="anchor-time-small">8 bulan lalu</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="post-body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, ut. Voluptatum necessitatibus
+                            quaerat nulla, dolor delectus consequuntur repellat expedita quae! Quasi odio porro natus
+                            quo numquam, facere quis asperiores ipsum.
+                        </section>
+                        <section class="post-footer">
+                            <div class="post-footer-comment-wrapper">
+                                <div class="comment">
+                                    <div class="post-footer-option container">
+                                        <ul class="list-unstyled">
+                                            <li><a style="cursor: pointer;"
+                                                    onclick="javascript:save_like(`'.base_url().'status/save_likes/`,'.$records->id_status.');"><i
+                                                        class="glyphicon glyphicon-thumbs-up"></i> <span
+                                                        id="like_'.$records->id_status.'">
+                                                    </span></a></li>
+                                            <li><a style="cursor: pointer;"
+                                                    onclick="javascript:comment_button(`'.base_url().'status/comment_load/`,'.$records->id_status.')"><i
+                                                        class="glyphicon glyphicon-comment"></i> Comment</a></li>
+                                            <li><a href="#"
+                                                    onclick="share_button(`'.base_url().'status/p/'.$records->id_status.'`)"
+                                                    data-toggle="modal"><i class="glyphicon glyphicon-share-alt"></i>
+                                                    Share</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <span id="addPostComment'.$records->id_status.'" style="display: none;">
+                            <div id="allcomment'.$records->id_status.'"></div>
+                            <input type="hidden" id="id_status'.$records->id_status.'"
+                                name="id_status'.$records->id_status.'" value="'.$records->id_status.'">
+                            <input type="hidden" id="id_receiver'.$records->id_status.'"
+                                name="id_receiver'.$records->id_status.'" value="'.$records->id_user.'">
+                            <input type="hidden" id="url'.$records->id_status.'" name="url'.$records->id_status.'"
+                                value="'. 
+    base_url('status/p/'.$records->id_status).'">
+                            <div id="comment-section'.$records->id_status.'"></div>
+                            <div style="margin: 20px 0px 20px 0px">
+                                <textarea name="comment'.$records->id_status.'" id="comment'.$records->id_status.'"
+                                    class="form-control textarea-br comment_input" rows="4" required></textarea>
+                                <input
+                                    onclick="javascript:insert_comment(`'.base_url().'status/comment_add/`,'.$records->id_status.',`status`);"
+                                    type="submit" name="submit'.$records->id_status.'" class="form-control btn"
+                                    style="background-color:#1CA347;color: #fff" value="Submit"
+                                    id="submit'.$records->id_status.'">
+                            </div>
+                        </span>
+                    </div>
+                </article>
+                <!---->
+            </div>
+            <!--Sidebar1-->
+            <div class="col-md-4 sidebar">
+                <aside class="widgets">
+                    <!-- <h5 class="widget-title">Menu</h5> -->
+                    <h5 class="widget-title">Hashtag</h5>
+                    <ul>
+                        <a href="<?=base_url('search?keyword=Desktop%20Programming&pages=2');?>">#Desktop
+                            Programming</a>
+                        <a href="<?=base_url('search?keyword=Web Programming&pages=2');?>">#Web Programming</a>
+                        <a href="<?=base_url('search?keyword=Mobile Programmin&pages=2');?>">#Mobile Programming</a>
+                        <a href="<?=base_url('search?keyword=UI/UX Designer&pages=2');?>">#UI/UX Designer</a>
+                        <a href="<?=base_url('search?keyword=Data Analyst&pages=2');?>">#Data Analyst</a>
+                        <a href="<?=base_url('search?keyword=Translator&pages=2');?>">#Translator</a>
+                        <a href="<?=base_url('search?keyword=Documment&pages=2');?>">#Documment</a>
+                        <a href="<?=base_url('search?keyword=Design&pages=2');?>">#Design</a>
+                        <a href="<?=base_url('search?keyword=Copy Writing&pages=2');?>">#Copy Writing</a>
+                        <a href="<?=base_url('search?keyword=Video Graphic&pages=2');?>">#Video Graphic</a>
+                        <a href="<?=base_url('search?keyword=Sound Designer&pages=2');?>">#Sound Designer</a>
+                        <a href="<?=base_url('search?keyword=Animation&pages=2');?>">#Animation</a>
+                        <a href="<?=base_url('search?keyword=Social Media Specialist&pages=2');?>">#Social Media
+                            Specialist</a>
+                        <a href="<?=base_url('search?keyword=SEO/SEM Specialist&pages=2');?>">#SEO/SEM Specialist</a>
+                    </ul>
+
+                </aside>
+            </div>
+            <!---->
+            <!--Sidebar2-->
+            <div class="col-md-3 sidebar">
+                <aside class="widgets">
+                    <h5 class="widget-title">Settings</h5>
+                    <ul>
+                        <li><a href="<?= base_url()?>settings">General</a></li>
+                        <li><a href="<?= base_url()?>settings/appearance">Appearance</a></li>
+                        <li><a href="<?= base_url()?>settings/general">Detail</a></li>
+                    </ul>
+                </aside>
+            </div>
+            <!---->
+        </div>
+        <!-- End Bagian wrapper -->
+        <!-- <?php $this->load->view($modal);?> -->
+        <!-- Bagian footer -->
+        <div class="row">
+            <div class="col-md-12 footer" id="site-footer">
+                <footer class="copyright text-center">
+                    <p>&copy;
+                        2021 crefto.com
+                    </p>
+                </footer>
+            </div>
+        </div>
+        <!-- End Bagian footer -->
+    </div>
+    <script src="<?=base_url()?>/assets/template/front/js/function.js"></script>
+    <script src="<?=base_url()?>/assets/template/front/js/function-input.js"></script>
+    <!-- <script src="<?=base_url()?>/assets/template/front/js/socketOn.js"></script> -->
+
+    <script type="text/javascript">
+        var socket = io.connect(window.location.hostname + ':3000');
+        //subscribe untuk notifikasi
+        var id_user = "<?= $this->session->userdata['id_user']?>";
+        socket.emit('join_room', { room: 'user_', id_room: id_user });
+
+        socket.on('notif_count', function (data) {
+            $("#notif_count").html('<span style="position: absolute;top: 5px;right: -2px;padding: 0px 5px;border-radius: 50%;background-color: red;color: white;font-size: 12px;">' + data.notif_count + '</span>');
+            $('#notif_audio')[0].play();
+        });
+    </script>
+</body>
+
+</html>
