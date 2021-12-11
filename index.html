@@ -16,100 +16,6 @@
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
     <div class="container">
-        <!-- Title -->
-        <div class="navbar-header pull-left">
-            <div class="title"><a href="#" class="navbar-brand">Crefto</a></div>
-        </div>
-
-        <div class="navbar-header pull-right">
-            <ul class="nav pull-left">
-                <li class="dropdown pull-right">
-                    <a href="#" data-toggle="dropdown"
-                        style="color:#777; margin-top: 5px;padding:9px 3px;background-color: transparent;"
-                        class="dropdown-toggle"><span class="label label-pill label-danger count"
-                            style="border-radius:10px;"></span> @zivimoch<b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#" title="Profile">Profile</a>
-                        </li>
-                        <li>
-                            <a href="#" title="Profile">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#" title="Logout">Logout</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- <li class="dropdown pull-right">
-                    <a id="notifbell" href="#" data-toggle="dropdown"
-                        style="color:#777; margin-top: 5px;font-size:19px;padding:9px 3px 3px 3px;background-color: transparent;"
-                        class="dropdown-toggle">
-                        <span class="glyphicon glyphicon-bell"></span>
-                        <div id="notif_count">
-                            <span
-                                style="position: absolute;top: 5px;right: -2px;padding: 0px 5px;border-radius: 50%;background-color: red;color: white;font-size: 12px;">
-                                8
-                            </span>
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <div id="notif"></div>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <small><em> see all messages</em></small>
-                            </a>
-                        </li>
-                    </ul>
-                </li> -->
-                <a href="#" class="btn btn-md btn-success ModalaAdd" data-toggle="modal" data-target="#ModalaAdd"
-                    style="margin: 8px 5px 5px 3px">+ Post</a>
-            </ul>
-            <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span
-                    class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
-                    class="icon-bar"></span><span class="icon-bar"></span></button>
-        </div>
-        <div class="visible-xs-block clearfix"></div>
-        <div class="collapse navbar-collapse navbar-right">
-            <ul class="nav navbar-nav pull-left">
-                <li><a href="#">Feeds</a></li>
-                <li><a href="#">Project</a></li>
-                <li><a href="#">Job</a></li>
-                <li><a href="#">Workspace</a></li>
-            </ul>
-        </div>
-        <!---->
-        <!--Search Bar-->
-        <div class="collapse navbar-collapse navbar-left" style="overflow: visible;">
-            <form action="#" method="GET" class="navbar-form" role="search">
-
-                <div class="input-group stylish-input-group">
-                    <input name="keyword" type="text" id="search" class="form-control" placeholder="Search" value="">
-                    <input type="hidden" name="pages" id="pages" type="text" class="form-control" value="">
-                    <div class="input-group-btn" style="border: 1px solid;background: white;z-index: 2;">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span id="srch-category">Category</span> <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" id="mnu-category" style="min-width: 0px !important;">
-                            <li><a href="#" onclick="page(1)">Status</a></li>
-                            <li><a href="#" onclick="page(2)">Project</a></li>
-                            <li><a href="#" onclick="page(3)">Job</a></li>
-                        </ul>
-                    </div>
-                    <span class="input-group-addon">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                </div>
-
-            </form>
-        </div>
-        <!---->
-    </div>
-
-    <!-- <div class="container-fluid">
         <a class="navbar-brand" href="#">Crefto</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
             aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -141,9 +47,31 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Right</a>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a id="notifbell" href="#" data-toggle="dropdown"
+                        style="color:#777; margin-top: 5px;font-size:19px;padding:9px 3px 3px 3px;background-color: transparent;"
+                        class="dropdown-toggle"><i class="fas fa-bell"></i>
+                        <div id="notif_count">
+                            <span
+                                style="position: absolute;top: 5px;right: -2px;padding: 0px 5px;border-radius: 50%;background-color: red;color: white;font-size: 12px;">
+                                8
+                            </span>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <div id="notif"></div>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <small><em> see all messages</em></small>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false"> Menu </a>
+                        data-bs-toggle="dropdown" aria-expanded="false"> @Zivimoch </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarScrollingDropdown">
                         <li><a class="dropdown-item" href="#">Item</a></li>
                         <li><a class="dropdown-item" href="#">Item</a></li>
@@ -155,7 +83,6 @@
                 </li>
             </ul>
         </div>
-    </div> -->
 </nav>
 
 <body>
