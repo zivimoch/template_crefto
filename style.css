@@ -6,3 +6,53 @@
 .price-tag{
     height: 50px;
 }
+
+/*-- Chat Style --*/
+.bubble-username{
+    display: block;
+    position: relative;
+    padding: .25em .5em;
+    border-radius: 10px;
+    clear: both;
+    max-width:90%;
+    word-wrap: break-word; 
+}
+.bubble-left,
+.bubble-right {
+    position: relative;
+    padding: .25em .5em;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    clear: both;
+    max-width:90%;
+    word-wrap: break-word; 
+}
+
+.bubble-left {
+    float: left
+    margin-right:10%;
+    background: #ffee80;
+    display: inline-block;
+}
+.bubble-right {
+    float:right;
+    margin-left:10%;
+    background: #bae8ff;
+    display: block;
+}
+.bubble-hr {
+    border-top: 1px solid #fff;
+    margin: 3px;
+}
+/*-- Chat Style End --*/
+
+.profile-header {
+    background-color: skyblue;
+}
+
+/* Status Card */
+.status-card {
+    max-height: 400px;
+    overflow-y: auto;
+}
+/* Status Card End */
